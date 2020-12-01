@@ -1,29 +1,35 @@
 //get dog images
 function getDogImages(numOfDogs) {
-    if (numOfDogs < 3 || numOfDogs > 50) {
+    if (numOfDogs > 50) {
         $('#number-of-dogs').val('');
-        return alert("Please only enter a number between 3 and 50");
+        return alert("Please only enter a number less than 50");
+    } else if (numOfDogs < 3) {
+        fetch(`https://dog.ceo/api/breeds/image/random/3`)
+            .then(response=> response.json())
+            .then(responseJson => displayResults(responseJson))
+            .catch(error => alert("Somthing went wrong"));
     } else {
         fetch(`https://dog.ceo/api/breeds/image/random/${numOfDogs}`)
             .then(response=> response.json())
-            .then(responseJson => generatePicsHtml(responseJson))
+            .then(responseJson => displayResults(responseJson))
             .catch(error => alert("Somthing went wrong"));
     }
     $('#number-of-dogs').val('');
 }
 
 // generate html to add to DOM
-function generatePicsHtml (responseJson) {
+function displayResults (responseJson) {
     console.log(responseJson);
-    let resultsArray = responseJson.message;
-    let resultsHtml = '';
 
-    resultsArray.forEach(url => {
-        resultsHtml += `<div><img src="${url}" class='results-img'></div>`
+    
+    $('.results').html('<h2>Look at these dogs!</h2>');
+
+    //target .results and add updated url
+    responseJson.message.forEach(url => {
+        $('.results').append(`<div><img src="${url}" class="results-img"></div>`);
     });
-    //replace 'placeholder' img with each endpoint url
-    $('.results-img').replaceWith(resultsHtml);
-    //display results
+
+    //remove .hidden class
     $('.results').removeClass('hidden');
 }
 
