@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin-left: 2%;
+  }
+  
+  input {
+    width: 180px;
+  }
+
+  #result-container {
+      margin-top: 15px;
+  }
+
+  img {
+    width: 50%;
+  }
