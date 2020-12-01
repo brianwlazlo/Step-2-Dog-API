@@ -19,13 +19,12 @@ function generatePicsHtml (responseJson) {
     let resultsHtml = '';
 
     resultsArray.forEach(url => {
-        resultsHtml += `
-            <div id="result-container">
-                <img src="${url}" class='results-img'>
-            </div>`
-    })
-
-    $('#result-pictures').html(resultsHtml)
+        resultsHtml += `<div><img src="${url}" class='results-img'></div>`
+    });
+    //replace 'placeholder' img with each endpoint url
+    $('.results-img').replaceWith(resultsHtml);
+    //display results
+    $('.results').removeClass('hidden');
 }
 
 // watch for user input

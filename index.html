@@ -14,16 +14,20 @@
 
     <main>
         <div id="submitt-number-form">
-            <p>Pick a number between 3 and 50</p>
+            <p>Pick a number up to 50</p>
             <form id="dogs">
-                <input id="number-of-dogs" type="text" name="number-of-dogs" required>
+                <input id="number-of-dogs" type="text" name="number-of-dogs" required value='3'>
                 <button type="submit" id='dogQty-btn'>Show Me Dogs</button> 
             </form>
         </div>
 
-        <div id="result-pictures">
-
+        <!-- this <div> is hidden until number of dog imgs is requested -->
+        <div class="results hidden">
+            <h2>Look at these dogs!</h2>
+            <img class="results-img" alt="placeholder">
         </div>
+
+        
     </main>
 
 
