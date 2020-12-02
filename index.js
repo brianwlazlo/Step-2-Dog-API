@@ -2,12 +2,7 @@
 function getDogImages(numOfDogs) {
     if (numOfDogs > 50) {
         $('#number-of-dogs').val('');
-        return alert("Please only enter a number less than 50");
-    } else if (numOfDogs < 3) {
-        fetch(`https://dog.ceo/api/breeds/image/random/3`)
-            .then(response=> response.json())
-            .then(responseJson => displayResults(responseJson))
-            .catch(error => alert("Somthing went wrong"));
+        return alert("Please only enter a number up to 50");
     } else {
         fetch(`https://dog.ceo/api/breeds/image/random/${numOfDogs}`)
             .then(response=> response.json())
